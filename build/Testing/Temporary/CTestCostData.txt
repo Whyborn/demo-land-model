@@ -1,0 +1,6 @@
+tridiagonal 2 0.00140156
+soil_water 1 0.0553093
+soil_heat 2 0.00484154
+canopy 2 0.0012957
+land 1 0.0588336
+---

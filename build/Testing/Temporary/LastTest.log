@@ -1,0 +1,105 @@
+Start testing: Oct 16 17:02 AEDT
+----------------------------------------------------------
+1/5 Testing: tridiagonal
+1/5 Test: tridiagonal
+Command: "/home/work/Personal/demo-land-model/build/test_tridiagonal"
+Directory: /home/work/Personal/demo-land-model/build
+"tridiagonal" start time: Oct 16 17:02 AEDT
+Output:
+----------------------------------------------------------
+pass: tridiagonal solution(1)
+pass: tridiagonal solution(2)
+pass: tridiagonal solution(3)
+pass: tridiagonal solution(4)
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"tridiagonal" end time: Oct 16 17:02 AEDT
+"tridiagonal" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/5 Testing: soil_water
+2/5 Test: soil_water
+Command: "/home/work/Personal/demo-land-model/build/test_soil_water"
+Directory: /home/work/Personal/demo-land-model/build
+"soil_water" start time: Oct 16 17:02 AEDT
+Output:
+----------------------------------------------------------
+pass: matric head inverts water content
+pass: K(0) equals K_sat
+pass: Richards step conserves mass (worst per-step error < 1e-6 kg m-2)
+pass: steady drainage equals supply
+pass: no runoff below K_sat
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"soil_water" end time: Oct 16 17:02 AEDT
+"soil_water" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/5 Testing: soil_heat
+3/5 Test: soil_heat
+Command: "/home/work/Personal/demo-land-model/build/test_soil_heat"
+Directory: /home/work/Personal/demo-land-model/build
+"soil_heat" start time: Oct 16 17:02 AEDT
+Output:
+----------------------------------------------------------
+pass: zero-flux heat step conserves energy
+pass: heat content rises by flux * time
+pass: heat diffusion matches half-space analytic solution
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"soil_heat" end time: Oct 16 17:02 AEDT
+"soil_heat" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/5 Testing: canopy
+4/5 Test: canopy
+Command: "/home/work/Personal/demo-land-model/build/test_canopy"
+Directory: /home/work/Personal/demo-land-model/build
+"canopy" start time: Oct 16 17:02 AEDT
+Output:
+----------------------------------------------------------
+pass: canopy water is conserved each step
+pass: canopy store stays within [0, max storage]
+pass: throughfall is never negative
+pass: canopy store actually fills
+pass: bare soil: all rain reaches ground
+pass: bare soil: surface air temperature
+pass: bare soil: full evaporative demand on soil
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"canopy" end time: Oct 16 17:02 AEDT
+"canopy" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/5 Testing: land
+5/5 Test: land
+Command: "/home/work/Personal/demo-land-model/build/test_land"
+Directory: /home/work/Personal/demo-land-model/build
+"land" start time: Oct 16 17:02 AEDT
+Output:
+----------------------------------------------------------
+pass: aggregated throughfall is fraction-weighted
+pass: aggregated canopy evaporation
+pass: aggregated soil evaporation demand
+pass: aggregated ground heat flux
+pass: cell water budget closes (error < 1e-6 kg m-2 per step)
+pass: soil temperatures stay physical
+pass: water content between residual and saturation
+pass: Richards solver converged on every step
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"land" end time: Oct 16 17:02 AEDT
+"land" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 16 17:02 AEDT

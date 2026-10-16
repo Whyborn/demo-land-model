@@ -1,0 +1,13 @@
+# The fortran modules provided by this target.
+provides
+ canopy_mod.mod
+ constants_mod.mod
+ forcing_mod.mod
+ io_mod.mod
+ kinds_mod.mod
+ land_mod.mod
+ soil_heat_mod.mod
+ soil_properties_mod.mod
+ soil_water_mod.mod
+ tridiagonal_mod.mod
+ types_mod.mod

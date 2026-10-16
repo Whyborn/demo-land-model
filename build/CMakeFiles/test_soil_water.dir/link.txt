@@ -1,0 +1,1 @@
+/usr/bin/f95 -g CMakeFiles/test_soil_water.dir/tests/test_soil_water.f90.o -o test_soil_water  libtest_utilities.a liblandmodel.a 

@@ -1,0 +1,1 @@
+/usr/bin/f95 -g CMakeFiles/test_tridiagonal.dir/tests/test_tridiagonal.f90.o -o test_tridiagonal  libtest_utilities.a liblandmodel.a 

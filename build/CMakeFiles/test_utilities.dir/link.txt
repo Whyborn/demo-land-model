@@ -1,0 +1,2 @@
+/usr/bin/ar qc libtest_utilities.a CMakeFiles/test_utilities.dir/tests/test_utilities_mod.f90.o
+/usr/bin/ranlib libtest_utilities.a
