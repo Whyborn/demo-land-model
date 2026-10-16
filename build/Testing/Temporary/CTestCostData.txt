@@ -1,6 +1,9 @@
-tridiagonal 2 0.00140156
-soil_water 1 0.0553093
-soil_heat 2 0.00484154
-canopy 2 0.0012957
-land 1 0.0588336
+tridiagonal 1 0.00292909
+csv 1 0.298686
+parameters 1 0.498851
+soil_water 1 0.0310815
+soil_heat 1 0.00563701
+canopy 1 0.00171102
+land 1 0.0531439
+driver 1 0.200783
 ---

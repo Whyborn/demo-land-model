@@ -1,13 +1,13 @@
 program test_canopy
   use kinds_mod, only: wp
   use types_mod, only: CanopyParameters, CanopyState, CanopyStepResult, AtmosphericForcing
-  use canopy_mod, only: canopy_step, default_tile_library
-  use test_utilities_mod, only: assert_true, assert_close
+  use canopy_mod, only: canopy_step
+  use test_utilities_mod, only: assert_true, assert_close, example_tile_library
   implicit none
 
   type(CanopyParameters) :: tile_library(3)
 
-  tile_library = default_tile_library()
+  tile_library = example_tile_library()
   call test_water_conservation_and_bounds(tile_library(1))
   call test_bare_soil_passes_everything(tile_library(3))
 

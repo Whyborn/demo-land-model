@@ -1,11 +1,9 @@
 program test_land
   use kinds_mod, only: wp
   use types_mod, only: SoilType, CanopyParameters, GridCell, Tile, TileFluxes, AtmosphericForcing
-  use soil_properties_mod, only: default_soil_library
-  use canopy_mod, only: default_tile_library
-  use forcing_mod, only: synthetic_forcing
   use land_mod, only: geometric_layer_thicknesses, build_grid_cell, aggregate_tile_fluxes, land_step
-  use test_utilities_mod, only: assert_true, assert_close
+  use constants_mod, only: pi, seconds_per_day
+  use test_utilities_mod, only: assert_true, assert_close, example_soil_library, example_tile_library
   implicit none
 
   call test_flux_aggregation()
@@ -42,8 +40,8 @@ contains
     logical :: all_converged
     integer :: step_index, cell_index
 
-    soil_library = default_soil_library()
-    tile_library = default_tile_library()
+    soil_library = example_soil_library()
+    tile_library = example_tile_library()
     layer_thickness = geometric_layer_thicknesses(10, 0.05_wp, 1.3_wp)
     cells(1) = build_grid_cell(1, soil_library(1), [0.6_wp, 0.3_wp, 0.1_wp], layer_thickness, 2.0_wp, 285.0_wp)
     cells(2) = build_grid_cell(2, soil_library(2), [0.2_wp, 0.7_wp, 0.1_wp], layer_thickness, 1.5_wp, 285.0_wp)
@@ -56,8 +54,8 @@ contains
     highest_wetness = -huge(1.0_wp)
     all_converged = .true.
     do step_index = 1, 144
-      forcing = synthetic_forcing((step_index - 1) * dt)
-      cells = land_step(cells, soil_library, tile_library, forcing, dt)
+      forcing = diurnal_forcing((step_index - 1) * dt)
+      cells = land_step(cells, soil_library, tile_library, spread(forcing, 1, size(cells)), dt)
       do cell_index = 1, size(cells)
         worst_balance_error = max(worst_balance_error, abs(cells(cell_index)%diagnostics%water_balance_error))
         lowest_temperature = min(lowest_temperature, minval(cells(cell_index)%column%temperature))
@@ -76,5 +74,25 @@ contains
                      'water content between residual and saturation')
     call assert_true(all_converged, 'Richards solver converged on every step')
   end subroutine test_multi_day_run
+
+  ! Diurnal cycle plus a 3 h rain event on day 2 and a 2 h event on day 4 (same for every cell).
+  pure function diurnal_forcing(time_seconds) result(forcing)
+    real(wp), intent(in) :: time_seconds
+    type(AtmosphericForcing) :: forcing
+    real(wp), parameter :: seconds_per_hour = 3600.0_wp
+    real(wp) :: day_phase, daylight_factor
+
+    day_phase = 2.0_wp * pi * (time_seconds - 6.0_wp * seconds_per_hour) / seconds_per_day
+    daylight_factor = max(sin(day_phase), 0.0_wp)
+    forcing%air_temperature = 288.0_wp + 6.0_wp * sin(day_phase - pi / 4.0_wp)
+    forcing%net_radiation = -50.0_wp + 450.0_wp * daylight_factor
+    forcing%potential_evaporation = 6.0e-5_wp * daylight_factor
+    forcing%precipitation = 0.0_wp
+    if (time_seconds >= 30.0_wp * seconds_per_hour .and. time_seconds < 33.0_wp * seconds_per_hour) then
+      forcing%precipitation = 10.0_wp / seconds_per_hour
+    else if (time_seconds >= 78.0_wp * seconds_per_hour .and. time_seconds < 80.0_wp * seconds_per_hour) then
+      forcing%precipitation = 4.0_wp / seconds_per_hour
+    end if
+  end function diurnal_forcing
 
 end program test_land

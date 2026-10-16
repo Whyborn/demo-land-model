@@ -7,10 +7,11 @@ module types_mod
   private
 
   public :: SoilType, SoilColumn, CanopyParameters, CanopyState, TileFluxes
-  public :: CanopyStepResult, Tile, CellDiagnostics, GridCell, AtmosphericForcing
+  public :: CanopyStepResult, Tile, CellDiagnostics, GridCell, AtmosphericForcing, CellDefinition
 
   ! Static soil properties (van Genuchten hydraulics, simple thermal properties).
   type :: SoilType
+    integer :: id = 0                            ! soil type ID used in input files
     character(len=16) :: name = 'unnamed'
     real(wp) :: theta_sat = 0.4_wp                ! saturated water content (m3 m-3)
     real(wp) :: theta_res = 0.05_wp               ! residual water content (m3 m-3)
@@ -33,6 +34,7 @@ module types_mod
 
   ! Prescribed canopy properties for one tile type.
   type :: CanopyParameters
+    integer :: id = 0                            ! tile type ID used in input files
     character(len=16) :: name = 'unnamed'
     real(wp) :: leaf_area_index = 0.0_wp          ! m2 m-2
     real(wp) :: radiation_extinction = 0.5_wp     ! Beer's law coefficient (-)
@@ -85,11 +87,20 @@ module types_mod
   end type CellDiagnostics
 
   type :: GridCell
+    integer :: cell_id = 0                        ! cell ID from the input files
     integer :: soil_type_index = 1                ! index into the soil library
     type(SoilColumn) :: column
     type(Tile), allocatable :: tiles(:)
     type(CellDiagnostics) :: diagnostics
   end type GridCell
+
+  ! One grid cell as described in the cells input file. Indices refer to the soil and tile libraries.
+  type :: CellDefinition
+    integer :: cell_id = 0
+    integer :: soil_index = 1
+    real(wp) :: water_table_depth = 2.0_wp        ! m below the surface
+    real(wp), allocatable :: tile_fractions(:)    ! one per tile library entry
+  end type CellDefinition
 
   type :: AtmosphericForcing
     real(wp) :: precipitation = 0.0_wp            ! kg m-2 s-1

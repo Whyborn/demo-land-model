@@ -8,6 +8,18 @@ FILE(REMOVE
   "modules/CONSTANTS_MOD.mod"
   "CMakeFiles/landmodel.dir/constants_mod.mod.stamp"
 
+  "modules/csv_mod.mod"
+  "modules/CSV_MOD.mod"
+  "CMakeFiles/landmodel.dir/csv_mod.mod.stamp"
+
+  "modules/driver_mod.mod"
+  "modules/DRIVER_MOD.mod"
+  "CMakeFiles/landmodel.dir/driver_mod.mod.stamp"
+
+  "modules/errors_mod.mod"
+  "modules/ERRORS_MOD.mod"
+  "CMakeFiles/landmodel.dir/errors_mod.mod.stamp"
+
   "modules/forcing_mod.mod"
   "modules/FORCING_MOD.mod"
   "CMakeFiles/landmodel.dir/forcing_mod.mod.stamp"
@@ -23,6 +35,10 @@ FILE(REMOVE
   "modules/land_mod.mod"
   "modules/LAND_MOD.mod"
   "CMakeFiles/landmodel.dir/land_mod.mod.stamp"
+
+  "modules/parameters_mod.mod"
+  "modules/PARAMETERS_MOD.mod"
+  "CMakeFiles/landmodel.dir/parameters_mod.mod.stamp"
 
   "modules/soil_heat_mod.mod"
   "modules/SOIL_HEAT_MOD.mod"

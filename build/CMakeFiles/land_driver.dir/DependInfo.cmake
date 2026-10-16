@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_Fortran
-  "/home/work/Personal/demo-land-model/app/main.f90" "/home/work/Personal/demo-land-model/build/CMakeFiles/land_driver.dir/app/main.f90.o"
+  "/home/work/Personal/demo-land-model/src/main.f90" "/home/work/Personal/demo-land-model/build/CMakeFiles/land_driver.dir/src/main.f90.o"
   )
 set(CMAKE_Fortran_COMPILER_ID "GNU")
 set(CMAKE_Fortran_SUBMODULE_SEP "@")

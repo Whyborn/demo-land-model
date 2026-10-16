@@ -1,0 +1,8 @@
+# Soil types. soil_id is the ID referenced from cells.csv; name only records what the ID means.
+# Record of IDs: 1 = sand, 2 = loam, 3 = clay_loam (approximate Carsel & Parrish 1988 values).
+# Units: theta in m3 m-3, alpha in m-1, k_sat in m s-1, specific_storage in m-1,
+#        heat_capacity_dry in J m-3 K-1, conductivities in W m-1 K-1.
+soil_id,name,theta_sat,theta_res,van_genuchten_alpha,van_genuchten_n,k_sat,specific_storage,heat_capacity_dry,conductivity_dry,conductivity_sat
+1,sand,0.43,0.045,14.5,2.68,8.25e-5,1.0e-4,1.3e6,0.30,2.2
+2,loam,0.43,0.078,3.6,1.56,2.89e-6,1.0e-4,1.2e6,0.25,1.6
+3,clay_loam,0.41,0.095,1.9,1.31,6.4e-7,1.0e-4,1.1e6,0.20,1.4

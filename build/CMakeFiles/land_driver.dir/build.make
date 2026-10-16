@@ -69,27 +69,27 @@ include CMakeFiles/land_driver.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/land_driver.dir/flags.make
 
-CMakeFiles/land_driver.dir/app/main.f90.o: CMakeFiles/land_driver.dir/flags.make
-CMakeFiles/land_driver.dir/app/main.f90.o: /home/work/Personal/demo-land-model/app/main.f90
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/work/Personal/demo-land-model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object CMakeFiles/land_driver.dir/app/main.f90.o"
-	/usr/bin/f95 $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/work/Personal/demo-land-model/app/main.f90 -o CMakeFiles/land_driver.dir/app/main.f90.o
+CMakeFiles/land_driver.dir/src/main.f90.o: CMakeFiles/land_driver.dir/flags.make
+CMakeFiles/land_driver.dir/src/main.f90.o: /home/work/Personal/demo-land-model/src/main.f90
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/home/work/Personal/demo-land-model/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building Fortran object CMakeFiles/land_driver.dir/src/main.f90.o"
+	/usr/bin/f95 $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -c /home/work/Personal/demo-land-model/src/main.f90 -o CMakeFiles/land_driver.dir/src/main.f90.o
 
-CMakeFiles/land_driver.dir/app/main.f90.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing Fortran source to CMakeFiles/land_driver.dir/app/main.f90.i"
-	/usr/bin/f95 $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/work/Personal/demo-land-model/app/main.f90 > CMakeFiles/land_driver.dir/app/main.f90.i
+CMakeFiles/land_driver.dir/src/main.f90.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing Fortran source to CMakeFiles/land_driver.dir/src/main.f90.i"
+	/usr/bin/f95 $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -E /home/work/Personal/demo-land-model/src/main.f90 > CMakeFiles/land_driver.dir/src/main.f90.i
 
-CMakeFiles/land_driver.dir/app/main.f90.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling Fortran source to assembly CMakeFiles/land_driver.dir/app/main.f90.s"
-	/usr/bin/f95 $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/work/Personal/demo-land-model/app/main.f90 -o CMakeFiles/land_driver.dir/app/main.f90.s
+CMakeFiles/land_driver.dir/src/main.f90.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling Fortran source to assembly CMakeFiles/land_driver.dir/src/main.f90.s"
+	/usr/bin/f95 $(Fortran_DEFINES) $(Fortran_INCLUDES) $(Fortran_FLAGS) -S /home/work/Personal/demo-land-model/src/main.f90 -o CMakeFiles/land_driver.dir/src/main.f90.s
 
 # Object files for target land_driver
 land_driver_OBJECTS = \
-"CMakeFiles/land_driver.dir/app/main.f90.o"
+"CMakeFiles/land_driver.dir/src/main.f90.o"
 
 # External object files for target land_driver
 land_driver_EXTERNAL_OBJECTS =
 
-land_driver: CMakeFiles/land_driver.dir/app/main.f90.o
+land_driver: CMakeFiles/land_driver.dir/src/main.f90.o
 land_driver: CMakeFiles/land_driver.dir/build.make
 land_driver: liblandmodel.a
 land_driver: CMakeFiles/land_driver.dir/link.txt

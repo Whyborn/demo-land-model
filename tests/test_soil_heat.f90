@@ -2,14 +2,14 @@ program test_soil_heat
   use kinds_mod, only: wp
   use constants_mod, only: pi
   use types_mod, only: SoilType
-  use soil_properties_mod, only: default_soil_library, thermal_conductivity, volumetric_heat_capacity
+  use soil_properties_mod, only: thermal_conductivity, volumetric_heat_capacity
   use soil_heat_mod, only: soil_heat_step, column_heat_content
-  use test_utilities_mod, only: assert_close
+  use test_utilities_mod, only: assert_close, example_soil_library
   implicit none
 
   type(SoilType) :: soil, soil_library(3)
 
-  soil_library = default_soil_library()
+  soil_library = example_soil_library()
   soil = soil_library(2)
   call test_energy_conservation(soil)
   call test_constant_flux_half_space(soil)

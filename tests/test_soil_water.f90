@@ -2,15 +2,14 @@ program test_soil_water
   use kinds_mod, only: wp
   use constants_mod, only: water_density
   use types_mod, only: SoilType
-  use soil_properties_mod, only: default_soil_library, water_content, matric_head_from_water_content, &
-                                 hydraulic_conductivity
+  use soil_properties_mod, only: water_content, matric_head_from_water_content, hydraulic_conductivity
   use soil_water_mod, only: SoilWaterResult, soil_water_step, column_water_storage
-  use test_utilities_mod, only: assert_true, assert_close
+  use test_utilities_mod, only: assert_true, assert_close, example_soil_library
   implicit none
 
   type(SoilType) :: soil_library(3)
 
-  soil_library = default_soil_library()
+  soil_library = example_soil_library()
   call test_retention_inverse(soil_library(2))
   call test_mass_balance(soil_library(2))
   call test_steady_infiltration(soil_library(1))

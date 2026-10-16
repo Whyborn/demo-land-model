@@ -1,0 +1,8 @@
+# Grid cells. soil_id refers to soil_types.csv; tile_fraction_<id> columns refer to tile_id in
+# tile_types.csv (1 = broadleaf, 2 = grass, 3 = bare_soil) and must sum to 1 in each row.
+# cell_id is also the column header used in the forcing files. water_table_depth is in m.
+cell_id,soil_id,water_table_depth,tile_fraction_1,tile_fraction_2,tile_fraction_3
+1,1,2.0,0.6,0.3,0.1
+2,2,1.5,0.2,0.7,0.1
+3,3,1.0,0.0,0.5,0.5
+4,2,3.0,0.0,0.0,1.0

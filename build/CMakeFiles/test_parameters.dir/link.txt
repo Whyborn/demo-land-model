@@ -1,0 +1,1 @@
+/usr/bin/f95 -g CMakeFiles/test_parameters.dir/tests/test_parameters.f90.o -o test_parameters  libtest_utilities.a liblandmodel.a 

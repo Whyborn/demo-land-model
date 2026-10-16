@@ -10,7 +10,7 @@ module canopy_mod
   implicit none
   private
 
-  public :: canopy_cover_fraction, canopy_step, default_tile_library
+  public :: canopy_cover_fraction, canopy_step
 
 contains
 
@@ -60,22 +60,5 @@ contains
     step_result%fluxes%ground_heat_flux = transmitted_radiation &
         + parameters%canopy_ground_exchange * (canopy_temperature_new - soil_surface_temperature)
   end function canopy_step
-
-  ! Broadleaf forest, grass and bare soil.
-  pure function default_tile_library() result(library)
-    type(CanopyParameters) :: library(3)
-    library(1) = CanopyParameters(name='broadleaf', leaf_area_index=5.0_wp, radiation_extinction=0.5_wp, &
-                                  max_water_storage=1.0_wp, interception_fraction=0.7_wp, &
-                                  heat_capacity=2.0e4_wp, canopy_air_exchange=20.0_wp, &
-                                  canopy_ground_exchange=5.0_wp)
-    library(2) = CanopyParameters(name='grass', leaf_area_index=2.0_wp, radiation_extinction=0.5_wp, &
-                                  max_water_storage=0.4_wp, interception_fraction=0.5_wp, &
-                                  heat_capacity=5.0e3_wp, canopy_air_exchange=15.0_wp, &
-                                  canopy_ground_exchange=8.0_wp)
-    library(3) = CanopyParameters(name='bare_soil', leaf_area_index=0.0_wp, radiation_extinction=0.5_wp, &
-                                  max_water_storage=0.0_wp, interception_fraction=0.0_wp, &
-                                  heat_capacity=0.0_wp, canopy_air_exchange=10.0_wp, &
-                                  canopy_ground_exchange=10.0_wp)
-  end function default_tile_library
 
 end module canopy_mod

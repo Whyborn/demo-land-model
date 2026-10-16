@@ -1,0 +1,8 @@
+# Tile (surface) types. tile_id is the ID used for the tile_fraction_<id> columns in cells.csv;
+# name only records what the ID means.
+# Record of IDs: 1 = broadleaf, 2 = grass, 3 = bare_soil.
+# Units: max_water_storage in kg m-2, heat_capacity in J m-2 K-1, exchange coefficients in W m-2 K-1.
+tile_id,name,leaf_area_index,radiation_extinction,max_water_storage,interception_fraction,heat_capacity,canopy_air_exchange,canopy_ground_exchange
+1,broadleaf,5.0,0.5,1.0,0.7,2.0e4,20.0,5.0
+2,grass,2.0,0.5,0.4,0.5,5.0e3,15.0,8.0
+3,bare_soil,0.0,0.5,0.0,0.0,0.0,10.0,10.0

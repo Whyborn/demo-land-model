@@ -3,6 +3,7 @@
 
 # Note that incremental build could trigger a call to cmake_copy_f90_mod on each re-build
 CMakeFiles/test_utilities.dir/tests/test_utilities_mod.f90.o: CMakeFiles/landmodel.dir/kinds_mod.mod.stamp
+CMakeFiles/test_utilities.dir/tests/test_utilities_mod.f90.o: CMakeFiles/landmodel.dir/types_mod.mod.stamp
 CMakeFiles/test_utilities.dir/tests/test_utilities_mod.f90.o.provides.build: CMakeFiles/test_utilities.dir/test_utilities_mod.mod.stamp
 CMakeFiles/test_utilities.dir/test_utilities_mod.mod.stamp: CMakeFiles/test_utilities.dir/tests/test_utilities_mod.f90.o
 	$(CMAKE_COMMAND) -E cmake_copy_f90_mod modules/test_utilities_mod.mod CMakeFiles/test_utilities.dir/test_utilities_mod.mod.stamp GNU

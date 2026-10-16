@@ -39,7 +39,7 @@ contains
     real(wp), intent(in) :: tile_fractions(:), layer_thickness(:), water_table_depth, initial_temperature
     type(GridCell) :: cell
 
-    real(wp), parameter :: fraction_tolerance = 1.0e-8_wp
+    real(wp), parameter :: fraction_tolerance = 1.0e-6_wp
     real(wp) :: layer_centre_depth(size(layer_thickness))
     integer :: layer_index
     integer :: tile_index
@@ -169,18 +169,19 @@ contains
         solver_converged = water_result%converged)
   end function cell_step
 
+  ! Advance every cell by dt. forcing(:) holds one entry per cell.
   pure function land_step(cells, soil_library, tile_library, forcing, dt) result(new_cells)
     type(GridCell), intent(in) :: cells(:)
     type(SoilType), intent(in) :: soil_library(:)
     type(CanopyParameters), intent(in) :: tile_library(:)
-    type(AtmosphericForcing), intent(in) :: forcing
+    type(AtmosphericForcing), intent(in) :: forcing(:)
     real(wp), intent(in) :: dt
     type(GridCell) :: new_cells(size(cells))
 
     integer :: cell_index
     do cell_index = 1, size(cells)
       new_cells(cell_index) = cell_step(cells(cell_index), soil_library(cells(cell_index)%soil_type_index), &
-                                        tile_library, forcing, dt)
+                                        tile_library, forcing(cell_index), dt)
     end do
   end function land_step
 

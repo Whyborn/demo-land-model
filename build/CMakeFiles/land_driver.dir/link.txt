@@ -1,1 +1,1 @@
-/usr/bin/f95 -g CMakeFiles/land_driver.dir/app/main.f90.o -o land_driver  liblandmodel.a 
+/usr/bin/f95 -g CMakeFiles/land_driver.dir/src/main.f90.o -o land_driver  liblandmodel.a 

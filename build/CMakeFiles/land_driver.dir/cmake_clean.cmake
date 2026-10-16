@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/land_driver.dir/app/main.f90.o"
+  "CMakeFiles/land_driver.dir/src/main.f90.o"
   "land_driver"
   "land_driver.pdb"
 )

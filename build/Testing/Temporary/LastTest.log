@@ -1,10 +1,10 @@
-Start testing: Oct 16 17:02 AEDT
+Start testing: Oct 16 17:33 AEDT
 ----------------------------------------------------------
-1/5 Testing: tridiagonal
-1/5 Test: tridiagonal
+1/8 Testing: tridiagonal
+1/8 Test: tridiagonal
 Command: "/home/work/Personal/demo-land-model/build/test_tridiagonal"
 Directory: /home/work/Personal/demo-land-model/build
-"tridiagonal" start time: Oct 16 17:02 AEDT
+"tridiagonal" start time: Oct 16 17:33 AEDT
 Output:
 ----------------------------------------------------------
 pass: tridiagonal solution(1)
@@ -15,15 +15,76 @@ pass: tridiagonal solution(4)
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"tridiagonal" end time: Oct 16 17:02 AEDT
+"tridiagonal" end time: Oct 16 17:33 AEDT
 "tridiagonal" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-2/5 Testing: soil_water
-2/5 Test: soil_water
+2/8 Testing: csv
+2/8 Test: csv
+Command: "/home/work/Personal/demo-land-model/build/test_csv"
+Directory: /home/work/Personal/demo-land-model/build
+"csv" start time: Oct 16 17:33 AEDT
+Output:
+----------------------------------------------------------
+pass: split_fields counts fields including empty ones
+pass: split_fields trims leading and trailing blanks
+pass: split_fields keeps empty and last fields
+pass: comments and blank lines are skipped; header is not a data row
+pass: columns are found by header name
+pass: integer column is parsed (CRLF tolerated)
+pass: real column is parsed
+pass: string column is returned
+pass: asking for a missing column stops the program
+pass: a non-numeric value in a numeric column stops the program
+pass: a row with the wrong number of fields stops the program
+pass: a missing file stops the program
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Passed.
+"csv" end time: Oct 16 17:33 AEDT
+"csv" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/8 Testing: parameters
+3/8 Test: parameters
+Command: "/home/work/Personal/demo-land-model/build/test_parameters"
+Directory: /home/work/Personal/demo-land-model/build
+"parameters" start time: Oct 16 17:33 AEDT
+Output:
+----------------------------------------------------------
+pass: soil IDs are read in file order
+pass: soil k_sat is read
+pass: soil van_genuchten_n is read
+pass: soil name is kept as a record
+pass: tile IDs are read in file order
+pass: tile max_water_storage is read
+pass: cells are read
+pass: soil_id is mapped to the library position
+pass: tile_fraction_5 maps to tile ID 5
+pass: tile_fraction_2 maps to tile ID 2
+pass: water table depth is read
+pass: find_index_by_id
+pass: duplicate soil_id stops the program
+pass: theta_res >= theta_sat stops the program
+pass: a missing soil parameter column stops the program
+pass: a cell with an unknown soil_id stops the program
+pass: a tile_fraction column with an unknown tile ID stops the program
+pass: tile fractions that do not sum to 1 stop the program
+pass: a missing tile_fraction column stops the program
+<end of output>
+Test time =   0.50 sec
+----------------------------------------------------------
+Test Passed.
+"parameters" end time: Oct 16 17:33 AEDT
+"parameters" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/8 Testing: soil_water
+4/8 Test: soil_water
 Command: "/home/work/Personal/demo-land-model/build/test_soil_water"
 Directory: /home/work/Personal/demo-land-model/build
-"soil_water" start time: Oct 16 17:02 AEDT
+"soil_water" start time: Oct 16 17:33 AEDT
 Output:
 ----------------------------------------------------------
 pass: matric head inverts water content
@@ -32,18 +93,18 @@ pass: Richards step conserves mass (worst per-step error < 1e-6 kg m-2)
 pass: steady drainage equals supply
 pass: no runoff below K_sat
 <end of output>
-Test time =   0.06 sec
+Test time =   0.03 sec
 ----------------------------------------------------------
 Test Passed.
-"soil_water" end time: Oct 16 17:02 AEDT
+"soil_water" end time: Oct 16 17:33 AEDT
 "soil_water" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-3/5 Testing: soil_heat
-3/5 Test: soil_heat
+5/8 Testing: soil_heat
+5/8 Test: soil_heat
 Command: "/home/work/Personal/demo-land-model/build/test_soil_heat"
 Directory: /home/work/Personal/demo-land-model/build
-"soil_heat" start time: Oct 16 17:02 AEDT
+"soil_heat" start time: Oct 16 17:33 AEDT
 Output:
 ----------------------------------------------------------
 pass: zero-flux heat step conserves energy
@@ -53,15 +114,15 @@ pass: heat diffusion matches half-space analytic solution
 Test time =   0.01 sec
 ----------------------------------------------------------
 Test Passed.
-"soil_heat" end time: Oct 16 17:02 AEDT
+"soil_heat" end time: Oct 16 17:33 AEDT
 "soil_heat" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-4/5 Testing: canopy
-4/5 Test: canopy
+6/8 Testing: canopy
+6/8 Test: canopy
 Command: "/home/work/Personal/demo-land-model/build/test_canopy"
 Directory: /home/work/Personal/demo-land-model/build
-"canopy" start time: Oct 16 17:02 AEDT
+"canopy" start time: Oct 16 17:33 AEDT
 Output:
 ----------------------------------------------------------
 pass: canopy water is conserved each step
@@ -75,15 +136,15 @@ pass: bare soil: full evaporative demand on soil
 Test time =   0.00 sec
 ----------------------------------------------------------
 Test Passed.
-"canopy" end time: Oct 16 17:02 AEDT
+"canopy" end time: Oct 16 17:33 AEDT
 "canopy" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-5/5 Testing: land
-5/5 Test: land
+7/8 Testing: land
+7/8 Test: land
 Command: "/home/work/Personal/demo-land-model/build/test_land"
 Directory: /home/work/Personal/demo-land-model/build
-"land" start time: Oct 16 17:02 AEDT
+"land" start time: Oct 16 17:33 AEDT
 Output:
 ----------------------------------------------------------
 pass: aggregated throughfall is fraction-weighted
@@ -95,11 +156,39 @@ pass: soil temperatures stay physical
 pass: water content between residual and saturation
 pass: Richards solver converged on every step
 <end of output>
-Test time =   0.06 sec
+Test time =   0.05 sec
 ----------------------------------------------------------
 Test Passed.
-"land" end time: Oct 16 17:02 AEDT
+"land" end time: Oct 16 17:33 AEDT
 "land" time elapsed: 00:00:00
 ----------------------------------------------------------
 
-End testing: Oct 16 17:02 AEDT
+8/8 Testing: driver
+8/8 Test: driver
+Command: "/home/work/Personal/demo-land-model/build/test_driver"
+Directory: /home/work/Personal/demo-land-model/build
+"driver" start time: Oct 16 17:33 AEDT
+Output:
+----------------------------------------------------------
+pass: time step is read from the namelist
+pass: run length is read from the namelist
+pass: soil parameter file location is read from the namelist
+pass: unset optional values keep their defaults
+land_driver: ran 24 steps over 2 cells; output in test_driver_files/output
+pass: 12 h at 1800 s gives 24 rows per cell
+pass: cell 5 receives its own forcing column (2 h at 2e-3 kg m-2 s-1)
+pass: cell 6 receives its own forcing column despite different column order
+pass: water balance closes in every cell and step
+pass: runoff is never negative
+pass: a time step that does not divide 3600 s stops the program
+pass: forcing shorter than the run stops the program
+pass: a namelist without file locations stops the program
+<end of output>
+Test time =   0.20 sec
+----------------------------------------------------------
+Test Passed.
+"driver" end time: Oct 16 17:33 AEDT
+"driver" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 16 17:33 AEDT

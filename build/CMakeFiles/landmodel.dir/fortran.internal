@@ -2,10 +2,14 @@
 provides
  canopy_mod.mod
  constants_mod.mod
+ csv_mod.mod
+ driver_mod.mod
+ errors_mod.mod
  forcing_mod.mod
  io_mod.mod
  kinds_mod.mod
  land_mod.mod
+ parameters_mod.mod
  soil_heat_mod.mod
  soil_properties_mod.mod
  soil_water_mod.mod

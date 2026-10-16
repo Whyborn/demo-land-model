@@ -8,19 +8,23 @@ endif()
 
 set(CMAKE_Fortran_MODULE_DIRECTORY ${CMAKE_BINARY_DIR}/modules)
 
-# Core model library: everything under src/ except the driver.
+# Core model library (including the driver module); src/main.f90 is only the program entry point.
 add_library(landmodel
   src/kinds_mod.f90
   src/constants_mod.f90
+  src/errors_mod.f90
+  src/csv_mod.f90
   src/types_mod.f90
   src/tridiagonal_mod.f90
   src/soil_properties_mod.f90
   src/soil_water_mod.f90
   src/soil_heat_mod.f90
   src/canopy_mod.f90
+  src/parameters_mod.f90
   src/forcing_mod.f90
   src/land_mod.f90
   src/io_mod.f90
+  src/driver_mod.f90
 )
 
 target_compile_options(landmodel PUBLIC
@@ -29,7 +33,7 @@ target_compile_options(landmodel PUBLIC
   $<$<CONFIG:Release>:-O3>
 )
 
-add_executable(land_driver app/main.f90)
+add_executable(land_driver src/main.f90)
 target_link_libraries(land_driver PRIVATE landmodel)
 
 # Tests
@@ -37,7 +41,7 @@ enable_testing()
 add_library(test_utilities tests/test_utilities_mod.f90)
 target_link_libraries(test_utilities PUBLIC landmodel)
 
-foreach(test_name tridiagonal soil_water soil_heat canopy land)
+foreach(test_name tridiagonal csv parameters soil_water soil_heat canopy land driver)
   add_executable(test_${test_name} tests/test_${test_name}.f90)
   target_link_libraries(test_${test_name} PRIVATE test_utilities)
   add_test(NAME ${test_name} COMMAND test_${test_name})

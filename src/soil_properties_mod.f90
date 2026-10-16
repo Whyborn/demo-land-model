@@ -10,7 +10,6 @@ module soil_properties_mod
 
   public :: water_content, matric_head_from_water_content, hydraulic_conductivity
   public :: specific_moisture_capacity, thermal_conductivity, volumetric_heat_capacity
-  public :: default_soil_library
 
   real(wp), parameter :: relative_conductivity_floor = 1.0e-12_wp
 
@@ -107,22 +106,5 @@ contains
     real(wp) :: heat_capacity
     heat_capacity = soil%heat_capacity_dry + theta * water_density * water_specific_heat
   end function volumetric_heat_capacity
-
-  ! Three representative soils (approximate Carsel & Parrish 1988 values).
-  pure function default_soil_library() result(library)
-    type(SoilType) :: library(3)
-    library(1) = SoilType(name='sand', theta_sat=0.43_wp, theta_res=0.045_wp, &
-                          van_genuchten_alpha=14.5_wp, van_genuchten_n=2.68_wp, k_sat=8.25e-5_wp, &
-                          specific_storage=1.0e-4_wp, heat_capacity_dry=1.3e6_wp, &
-                          conductivity_dry=0.3_wp, conductivity_sat=2.2_wp)
-    library(2) = SoilType(name='loam', theta_sat=0.43_wp, theta_res=0.078_wp, &
-                          van_genuchten_alpha=3.6_wp, van_genuchten_n=1.56_wp, k_sat=2.89e-6_wp, &
-                          specific_storage=1.0e-4_wp, heat_capacity_dry=1.2e6_wp, &
-                          conductivity_dry=0.25_wp, conductivity_sat=1.6_wp)
-    library(3) = SoilType(name='clay_loam', theta_sat=0.41_wp, theta_res=0.095_wp, &
-                          van_genuchten_alpha=1.9_wp, van_genuchten_n=1.31_wp, k_sat=6.4e-7_wp, &
-                          specific_storage=1.0e-4_wp, heat_capacity_dry=1.1e6_wp, &
-                          conductivity_dry=0.2_wp, conductivity_sat=1.4_wp)
-  end function default_soil_library
 
 end module soil_properties_mod
